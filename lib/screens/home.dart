@@ -17,13 +17,14 @@ class _HomepageState extends State<Homepage> {
   late Future<Map> allcurrencies;
   final formkey = GlobalKey<FormState>();
   @override
-  void initState() {  
+  void initState() {
     super.initState();
     setState(() {
       rates = fetchrates();
-      allcurrencies = fetchcurrency();  
+      allcurrencies = fetchcurrency();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,22 +41,31 @@ class _HomepageState extends State<Homepage> {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('No Internet')));
+                    return const Center(
+                      child:
+                          Text('Make sure your device has an active internet'),
+                    );
                   }
                   return Center(
                     child: FutureBuilder<Map>(
-                      future: allcurrencies,
-                      builder: (context, currsnapshot) {
-                         if (currsnapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                        return  Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AnytoAny(rates: snapshot.data!.rates,currencies: currsnapshot.data!),
-                          ], 
-                        );
-                      }
-                    ),
+                        future: allcurrencies,
+                        builder: (context, currsnapshot) {
+                          if (currsnapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AnytoAny(
+                                  rates: snapshot.data!.rates,
+                                  currencies: currsnapshot.data!),
+                            ],
+                          );
+                        }),
                   );
                 }),
           ),
