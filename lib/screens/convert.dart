@@ -57,14 +57,14 @@ class _AnytoAnyState extends State<AnytoAny> {
                     ),
                     DropdownButton<String>(
                       elevation: 16,
-                      style: const TextStyle(color: Colors.black87),
+                      style: const TextStyle(color: Colors.white),
                       icon: const Icon(
                         Icons.arrow_downward,
-                        color: Colors.black87,
+                        color: Colors.orange,
                       ),
                       underline: Container(
                         height: h / 512,
-                        color: Colors.yellow,
+                        color: Colors.orange,
                       ),
                       value: choose,
                       onChanged: (String? value) {
@@ -90,14 +90,14 @@ class _AnytoAnyState extends State<AnytoAny> {
                       flex: 1,
                     ),
                     DropdownButton<String>(
-                      style: const TextStyle(color: Colors.black87),
+                      style: const TextStyle(color: Colors.white),
                       icon: const Icon(
                         Icons.arrow_downward,
-                        color: Colors.black87,
+                        color: Colors.orange,
                       ),
                       underline: Container(
                         height: h / 512,
-                        color: Colors.yellow,
+                        color: Colors.orange,
                       ),
                       value: choose2,
                       onChanged: (String? value) {
@@ -129,17 +129,18 @@ class _AnytoAnyState extends State<AnytoAny> {
                 onPressed: () {
                   setState(() {
                     if (input.text.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(backgroundColor: Colors.red,
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          backgroundColor: Colors.red,
                           content: Text('Please Enter a valid number !')));
-                    }
-                    else {
+                    } else {
                       result = input.text +
-                        ' ' +
-                        choose +
-                        '=' +
-                        conversion(widget.rates, input.text, choose,
-                            choose2) + ' '+
-                        choose2;
+                          ' ' +
+                          choose +
+                          '=' +
+                          conversion(
+                              widget.rates, input.text, choose, choose2) +
+                          ' ' +
+                          choose2;
                     }
                   });
                 },

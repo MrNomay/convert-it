@@ -14,12 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
-      //  backgroundColor: Colors.black
-      ),
-      
+          brightness: Brightness.dark,
+          primarySwatch: Colors.orange,
+          
+
+          //  backgroundColor: Colors.black
+          ),
       home: const Homepage(),
     );
   }
 }
-

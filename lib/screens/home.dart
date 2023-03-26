@@ -29,7 +29,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Currency Converter'),
+        title: const Text('Convert it'),
       ),
       body: Container(
         padding: EdgeInsets.all(10),
