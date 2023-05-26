@@ -22,8 +22,9 @@ class _AnytoAnyState extends State<AnytoAny> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             const Text(
